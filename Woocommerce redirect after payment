@@ -1,0 +1,11 @@
+<?php
+
+add_action( 'template_redirect', 'jay_custom_redirect_after_purchase' ); 
+function jay_custom_redirect_after_purchase() {
+	global $wp;
+	
+	if ( is_checkout() && ! empty( $wp->query_vars['order-received'] ) ) {
+		wp_redirect( 'https://jasminoropeza.com/post-payment' );
+		exit;
+	}
+}
